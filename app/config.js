@@ -17,7 +17,10 @@ System.config({
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.7",
+    "falcor": "npm:falcor@0.1.17",
+    "falcor-http-datasource": "npm:falcor-http-datasource@0.1.3",
     "react": "npm:react@15.3.1",
+    "react-dom": "npm:react-dom@15.3.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
     },
@@ -65,7 +68,7 @@ System.config({
     "github:jspm/nodelibs-zlib@0.1.0": {
       "browserify-zlib": "npm:browserify-zlib@0.1.4"
     },
-    "npm:asap@2.0.4": {
+    "npm:asap@2.0.3": {
       "domain": "github:jspm/nodelibs-domain@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
@@ -107,11 +110,30 @@ System.config({
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
     "npm:domain-browser@1.1.7": {
-      "events": "github:jspm/nodelibs-events@0.1.1"
+      "events": "github:jspm/nodelibs-events@0.1.1",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:encoding@0.1.12": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "iconv-lite": "npm:iconv-lite@0.4.13"
+    },
+    "npm:falcor-http-datasource@0.1.3": {
+      "xmlhttprequest": "npm:xmlhttprequest@1.8.0"
+    },
+    "npm:falcor-json-graph@1.1.7": {
+      "falcor-path-syntax": "npm:falcor-path-syntax@0.2.4"
+    },
+    "npm:falcor@0.1.17": {
+      "asap": "npm:asap@2.0.3",
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "falcor-json-graph": "npm:falcor-json-graph@1.1.7",
+      "falcor-path-syntax": "npm:falcor-path-syntax@0.2.4",
+      "falcor-path-utils": "npm:falcor-path-utils@0.3.4",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "promise": "npm:promise@7.0.4",
+      "rx": "npm:rx@2.5.3",
+      "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:fbjs@0.8.4": {
       "core-js": "npm:core-js@1.2.7",
@@ -151,6 +173,7 @@ System.config({
       "js-tokens": "npm:js-tokens@1.0.3",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "stream": "github:jspm/nodelibs-stream@0.1.0",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:node-fetch@1.6.0": {
@@ -172,19 +195,27 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:process-nextick-args@1.0.7": {
-      "process": "github:jspm/nodelibs-process@0.1.2"
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.2"
     },
     "npm:process@0.11.8": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "vm": "github:jspm/nodelibs-vm@0.1.0"
     },
+    "npm:promise@7.0.4": {
+      "asap": "npm:asap@2.0.3",
+      "fs": "github:jspm/nodelibs-fs@0.1.2"
+    },
     "npm:promise@7.1.1": {
-      "asap": "npm:asap@2.0.4",
+      "asap": "npm:asap@2.0.3",
       "fs": "github:jspm/nodelibs-fs@0.1.2"
     },
     "npm:punycode@1.3.2": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:react-dom@15.3.1": {
+      "react": "npm:react@15.3.1"
     },
     "npm:react@15.3.1": {
       "fbjs": "npm:fbjs@0.8.4",
@@ -214,6 +245,9 @@ System.config({
       "string_decoder": "npm:string_decoder@0.10.31",
       "util-deprecate": "npm:util-deprecate@1.0.2"
     },
+    "npm:rx@2.5.3": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
       "inherits": "npm:inherits@2.0.1",
@@ -240,6 +274,15 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:xmlhttprequest@1.8.0": {
+      "buffer": "github:jspm/nodelibs-buffer@0.1.0",
+      "child_process": "github:jspm/nodelibs-child_process@0.1.0",
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "http": "github:jspm/nodelibs-http@1.7.1",
+      "https": "github:jspm/nodelibs-https@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "url": "github:jspm/nodelibs-url@0.1.0"
     }
   }
 });

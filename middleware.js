@@ -1,6 +1,6 @@
 import {renderToString as render} from 'react-dom/server'
 import React from 'react'
-import App from './app'
+import App from './app/app'
 
 module.exports = (options) =>
   (req, res, next) => {
@@ -11,7 +11,9 @@ module.exports = (options) =>
       const html =
         `
         <!DOCTYPE html>
-          <div id="app">${render(<App falcorPath={options.falcorPath} />)}</div>
+          <div id="app">${render(<App />)}</div>
+          <script src="js/bundle-sfx.js" />
+          <script>System.import('index.js')</script>
         `
       res.status(200).send(html)
     }
