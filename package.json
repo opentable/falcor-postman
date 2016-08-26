@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "jspm install",
-    "start": "node server.js",
-    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js"
+    "start": "npm run bundle && nodemon server.js",
+    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m"
   },
   "dependencies": {
     "babel-core": "^6.14.0",
