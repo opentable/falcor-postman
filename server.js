@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 const falcorPostman = require('./')(options)
 app.use(falcorPostman)
 
-app.use('/model.json', falcorExpress.dataSourceRoute(function (req, res) {
+app.use(options.falcorPath, falcorExpress.dataSourceRoute(function (req, res) {
 
   var router = new Router([
     {

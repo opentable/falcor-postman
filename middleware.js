@@ -4,7 +4,7 @@ import App from './app/app'
 
 module.exports = (options) =>
   (req, res, next) => {
-    const endpointRegExp = new RegExp(options.middlewarePath, 'i');
+    const endpointRegExp = new RegExp(options.middlewarePath, 'i')
     if (endpointRegExp.test(req.url)) {
       // TODO: pass queryString Params as props to the rendered component
       // TODO: add sfx bundle

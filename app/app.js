@@ -27,7 +27,6 @@ class App extends React.Component {
   }
 
   handleOnClick() {
-    console.log('clicked')
     this.falcorGet();
   }
 
