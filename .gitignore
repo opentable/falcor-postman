@@ -1,5 +1,6 @@
 .DS_Store
-node_modules
+coverage
 jspm_packages
-*.log
+node_modules
 public
+*.log

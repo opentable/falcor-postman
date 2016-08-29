@@ -4,8 +4,7 @@ import App from './app/app'
 
 module.exports = (options) =>
   (req, res, next) => {
-    const endpointRegExp = new RegExp(options.middlewarePath, 'i')
-    if (endpointRegExp.test(req.url)) {
+    if (req.url.match(new RegExp(options.middlewarePath, 'i'))) {
       // TODO: pass queryString Params as props to the rendered component
       // TODO: add sfx bundle
       const html =
@@ -15,7 +14,9 @@ module.exports = (options) =>
           <script src="js/bundle-sfx.js" />
           <script>System.import('index.js')</script>
         `
-      res.status(200).send(html)
+      res.status(200)
+      res.send(html)
+      return
     }
     next()
   }
