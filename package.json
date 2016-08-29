@@ -23,7 +23,7 @@
     "coverage": "istanbul cover _mocha -x app/model.js --  --compilers js:babel-core/register --recursive -r jsdom-global/register",
     "example": "npm run bundle && PORT=3001 nodemon server.js",
     "postinstall": "jspm install",
-    "start": "npm run bundle && nodemon server.js",
+    "start": "npm run bundle && node server.js",
     "test": "mocha --compilers js:babel-core/register --recursive -r jsdom-global/register"
   },
   "dependencies": {
