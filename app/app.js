@@ -35,7 +35,7 @@ class App extends React.Component {
         if (response) {
           this.setState({ response, error: {} })
         } else {
-          this.setState({ error: { message: 'response is undefined' } })
+          this.setState({ response: { json: {} }, error: { message: 'response is undefined' } })
         }
       }, (error) => {
         this.setState({ error })
