@@ -33,4 +33,8 @@ app.use(options.falcorPath, falcorExpress.dataSourceRoute((req, res) => {
   return router
 }))
 
-app.listen(3000, () => console.log('Listening on port 3000'))
+const port = process.env.PORT || 3000
+
+/* eslint no-console: "off" */
+
+app.listen(port, () => console.log(`go to http://0.0.0.0:${port}${options.middlewarePath}`))

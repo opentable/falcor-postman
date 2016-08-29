@@ -21,6 +21,7 @@
   "scripts": {
     "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m",
     "coverage": "istanbul cover _mocha --  --compilers js:babel-core/register --recursive",
+    "example": "npm run bundle && PORT=3001 nodemon server.js",
     "postinstall": "jspm install",
     "start": "npm run bundle && nodemon server.js",
     "test": "mocha --compilers js:babel-core/register --recursive"
