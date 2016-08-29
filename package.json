@@ -55,5 +55,30 @@
   "bugs": {
     "url": "https://github.com/opentable/falcor-postman/issues"
   },
-  "homepage": "https://github.com/opentable/falcor-postman#readme"
+  "homepage": "https://github.com/opentable/falcor-postman#readme",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": "airbnb",
+    "globals": {
+      "describe": false,
+      "it": false,
+      "beforeEach": false
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "peerDependencies": true
+        }
+      ],
+      "no-param-reassign": "off",
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
+  }
 }

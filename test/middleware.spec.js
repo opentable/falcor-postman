@@ -2,6 +2,7 @@ require('babel-core/register')({ presets: ['es2015', 'react'] })
 
 const chai = require('chai')
 const sinon = require('sinon')
+
 chai.should()
 
 describe('middleware', () => {

@@ -1,4 +1,4 @@
-import {renderToString as render} from 'react-dom/server'
+import { renderToString as render } from 'react-dom/server'
 import React from 'react'
 import App from './app/app'
 
