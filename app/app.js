@@ -1,5 +1,4 @@
 import React from 'react'
-import model from './model'
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +30,7 @@ class App extends React.Component {
   }
 
   falcorGet() {
-    model(this.props.falcorPath).get(JSON.parse(this.state.query))
+    this.props.model(this.props.falcorPath).get(JSON.parse(this.state.query))
       .then((response) => {
         if (response) {
           this.setState({ response, error: {} })
@@ -48,7 +47,8 @@ class App extends React.Component {
       <div className="App">
         <h1>falcor-routes</h1>
         <div>
-          <textarea className="App-textarea" rows="2" value={this.state.query} onChange={this.handleOnChange} />
+          <h2>query</h2>
+          <textarea className="App-textarea query" rows="2" value={this.state.query} onChange={this.handleOnChange} />
           <button onClick={this.handleOnClick}>{this.state.labels.button}</button>
         </div>
         <div>
@@ -65,6 +65,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  model: React.PropTypes.func,
   falcorPath: React.PropTypes.string,
 }
 

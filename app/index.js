@@ -1,5 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app'
+import model from './model'
 
-ReactDOM.render(<App falcorPath={'/model.json'} />, document.getElementById('app'))
+const props = {
+  model,
+  falcorPath: '/model.json',
+}
+
+ReactDOM.render(<App {...props} />, document.getElementById('app'))
