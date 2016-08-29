@@ -78,7 +78,8 @@
       "semi": [
         "error",
         "never"
-      ]
+      ],
+      "react/jsx-filename-extension": "off"
     }
   },
   "babel": {

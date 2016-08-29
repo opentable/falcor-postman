@@ -1,47 +1,46 @@
-import React from 'react';
-import model from './model';
+import React from 'react'
+import model from './model'
 
 class App extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       labels: {
-        button: 'get from query'
+        button: 'get from query',
       },
       query: '["metrosById", [72], ["name"]]',
       response: {},
-      error: {}
-    };
+      error: {},
+    }
 
-    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this)
     this.handleOnClick = this.handleOnClick.bind(this)
   }
 
   componentDidMount() {
-    this.falcorGet();
+    this.falcorGet()
   }
 
   handleOnChange(event) {
-    this.setState({ query: event.target.value });
+    this.setState({ query: event.target.value })
   }
 
   handleOnClick() {
-    this.falcorGet();
+    this.falcorGet()
   }
 
   falcorGet() {
     model(this.props.falcorPath).get(JSON.parse(this.state.query))
       .then((response) => {
         if (response) {
-          this.setState({ response, error: {} });
-        }
-        else {
-          this.setState({ error: { message: 'response is undefined' } });
+          this.setState({ response, error: {} })
+        } else {
+          this.setState({ error: { message: 'response is undefined' } })
         }
       }, (error) => {
-        this.setState({ error });
-      });
+        this.setState({ error })
+      })
   }
 
   render() {
@@ -49,20 +48,24 @@ class App extends React.Component {
       <div className="App">
         <h1>falcor-routes</h1>
         <div>
-          <textarea className="App-textarea" rows="2" value={this.state.query} onChange={this.handleOnChange}></textarea>
-          <button  onClick={this.handleOnClick}>{this.state.labels.button}</button>
+          <textarea className="App-textarea" rows="2" value={this.state.query} onChange={this.handleOnChange} />
+          <button onClick={this.handleOnClick}>{this.state.labels.button}</button>
         </div>
         <div>
           <h2>response.json</h2>
-          <textarea className="App-textarea" rows="25" value={JSON.stringify(this.state.response.json, null, 2) } readOnly></textarea>
+          <textarea className="App-textarea" rows="25" value={JSON.stringify(this.state.response.json, null, 2) } readOnly />
         </div>
         <div>
           <h2>error</h2>
-          <textarea className="App-textarea" rows="10" value={JSON.stringify(this.state.error, null, 2) } readOnly></textarea>
+          <textarea className="App-textarea" rows="10" value={JSON.stringify(this.state.error, null, 2) } readOnly />
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+App.propTypes = {
+  falcorPath: React.PropTypes.string,
+}
+
+export default App
