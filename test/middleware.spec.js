@@ -6,6 +6,8 @@ chai.should()
 describe('middleware', () => {
   describe('when instantiated', () => {
     const options = { middlewarePath: '/falcor-postman' }
+
+    /* eslint global-require: "off" */
     const middleware = require('../middleware')(options)
 
     it('then it should be instance of Function', () => {
