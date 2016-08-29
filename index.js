@@ -1,2 +1,3 @@
-require('babel-core/register')({ presets: ['es2015', 'react'] })
+require('babel-core/register')()
+
 module.exports = require('./middleware')

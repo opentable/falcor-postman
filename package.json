@@ -3,12 +3,27 @@
   "version": "1.0.0",
   "description": "falcor-postman",
   "main": "index.js",
-  "author": "",
+  "author": {
+    "name": "TBD",
+    "email": "TBD"
+  },
+  "contributors": [
+    {
+      "name": "Nick Balestra",
+      "email": "nbalestra@opentable.com"
+    },
+    {
+      "name": "Mattia Richetto",
+      "email": "mrichetto@opentable.com"
+    }
+  ],
   "license": "MIT",
   "scripts": {
+    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m",
+    "coverage": "istanbul cover _mocha --  --compilers js:babel-core/register --recursive",
     "postinstall": "jspm install",
     "start": "npm run bundle && nodemon server.js",
-    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m"
+    "test": "mocha --compilers js:babel-core/register --recursive"
   },
   "dependencies": {
     "babel-core": "^6.14.0",
@@ -20,11 +35,15 @@
     "react-dom": "^15.3.1"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "express": "^4.14.0",
     "falcor-express": "^0.1.2",
     "falcor-router": "^0.4.0",
+    "istanbul": "^1.1.0-alpha.1",
     "jspm": "^0.16.45",
-    "nodemon": "^1.10.2"
+    "mocha": "^3.0.2",
+    "nodemon": "^1.10.2",
+    "sinon": "^1.17.5"
   },
   "jspm": {
     "directories": {
@@ -49,5 +68,37 @@
   "bugs": {
     "url": "https://github.com/opentable/falcor-postman/issues"
   },
-  "homepage": "https://github.com/opentable/falcor-postman#readme"
+  "homepage": "https://github.com/opentable/falcor-postman#readme",
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "extends": "airbnb",
+    "globals": {
+      "describe": false,
+      "it": false,
+      "beforeEach": false
+    },
+    "rules": {
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "peerDependencies": true
+        }
+      ],
+      "no-param-reassign": "off",
+      "semi": [
+        "error",
+        "never"
+      ],
+      "react/jsx-filename-extension": "off"
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
 }
