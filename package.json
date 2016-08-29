@@ -3,7 +3,20 @@
   "version": "1.0.0",
   "description": "falcor-postman",
   "main": "index.js",
-  "author": "",
+  "author": {
+    "name": "TBD",
+    "email": "TBD"
+  },
+  "contributors": [
+    {
+      "name": "Nick Balestra",
+      "email": "nbalestra@opentable.com"
+    },
+    {
+      "name": "Mattia Richetto",
+      "email": "mrichetto@opentable.com"
+    }
+  ],
   "license": "MIT",
   "scripts": {
     "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m",
