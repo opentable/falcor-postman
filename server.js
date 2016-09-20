@@ -1,4 +1,4 @@
-/* eslint no-console: "off" */
+/* eslint no-console: off */
 
 const express = require('express')
 const path = require('path')
@@ -10,9 +10,10 @@ const app = express()
 const options = {
   middlewarePath: '/falcor-postman',
   falcorPath: '/model.json',
+  app
 }
 
-app.use(express.static(path.join(__dirname, 'public')))
+// app.use(express.static(path.join(__dirname, 'public')))
 
 const falcorPostman = require('./')(options)
 
