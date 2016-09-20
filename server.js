@@ -1,3 +1,5 @@
+/* eslint no-console: "off" */
+
 const express = require('express')
 const path = require('path')
 const falcorExpress = require('falcor-express')
@@ -21,7 +23,23 @@ app.use(options.falcorPath, falcorExpress.dataSourceRoute((req, res) => {
     {
       route: 'metrosById[{integers:ids}]["name"]',
       get(pathSet) {
+        const metros = [
+          { id: 4, name: 'San Francisco' },
+          { id: 72, name: 'London' },
+        ]
+
         const results = []
+        metros.forEach((metro) => {
+          pathSet[1].forEach((metroId) => {
+            if (metro.id === metroId) {
+              results.push({
+                path: ['metrosById', metro.id, 'name'],
+                value: metro.name,
+              })
+            }
+          }, this)
+        }, this)
+
         results.push({
           path: ['metrosById', 72, 'name'],
           value: 'London',
@@ -33,4 +51,6 @@ app.use(options.falcorPath, falcorExpress.dataSourceRoute((req, res) => {
   return router
 }))
 
-app.listen(3000, () => console.log('Listening on port 3000'))
+const port = process.env.PORT || 3000
+
+app.listen(port, () => console.log(`go to http://0.0.0.0:${port}${options.middlewarePath}`))
