@@ -1,24 +1,25 @@
 /* eslint no-console: "off" */
 
 const express = require('express')
-const path = require('path')
 const falcorExpress = require('falcor-express')
 const Router = require('falcor-router')
-
+const falcorPostman = require('./index.js')
 const app = express()
 
-const options = {
-  middlewarePath: '/falcor-postman',
-  falcorPath: '/model.json',
-}
+app.use(falcorPostman({
+  // # middlewarePath
+  // Optional: path used to serve the falcor-postman app, default: '/falcor-postman'
+  // middlewarePath: '/falcor-postman',
 
-app.use(express.static(path.join(__dirname, 'public')))
+  // # falcorPath
+  // Optional: falcor model path, default: localhost/model.json
+  // falcorPath: '/model.json',
 
-const falcorPostman = require('./')(options)
+  // Express app
+  app
+}))
 
-app.use(falcorPostman)
-
-app.use(options.falcorPath, falcorExpress.dataSourceRoute((req, res) => {
+app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
   const router = new Router([
     {
       route: 'metrosById[{integers:ids}]["name"]',
@@ -53,4 +54,4 @@ app.use(options.falcorPath, falcorExpress.dataSourceRoute((req, res) => {
 
 const port = process.env.PORT || 3000
 
-app.listen(port, () => console.log(`go to http://0.0.0.0:${port}${options.middlewarePath}`))
+app.listen(port, () => console.log(`go to http://0.0.0.0:${port}`))
