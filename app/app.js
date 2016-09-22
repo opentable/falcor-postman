@@ -1,31 +1,27 @@
 import React from 'react'
 
 class App extends React.Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      labels: {
-        button: 'get from query',
-      },
-      query: '["metrosById", [72], ["name"]]',
-      response: {},
-      error: {},
+  state = {
+    labels: {
+      button: 'get from query',
+    },
+    query: '["metrosById", [72], ["name"]]',
+    queries: [],
+    response: {},
+    error: {},
+  }
+
+  componentDidMount = () => this.falcorGet()
+
+  updateQuery = query => this.setState({ query })
+  handleOnChange= event => this.updateQuery(event.target.value)
+  handleOnClick = () => {
+    const queries = this.state.queries
+    const query = this.state.query
+    if (queries.length === 0 || queries[queries.length - 1] !== query) {
+      this.setState({queries: queries.concat(query)})
     }
-
-    this.handleOnChange = this.handleOnChange.bind(this)
-    this.handleOnClick = this.handleOnClick.bind(this)
-  }
-
-  componentDidMount() {
-    this.falcorGet()
-  }
-
-  handleOnChange(event) {
-    this.setState({ query: event.target.value })
-  }
-
-  handleOnClick() {
     this.falcorGet()
   }
 
@@ -43,8 +39,15 @@ class App extends React.Component {
   }
 
   render() {
+    const queryHistory = this.state.queries.map(query =>
+      <li onClick={this.updateQuery.bind(null, query)}>
+        { query }
+      </li>
+    )
+
     return (
       <div className="App">
+        <ul>{queryHistory}</ul>
         <h1>falcor-routes</h1>
         <div>
           <h2>query</h2>

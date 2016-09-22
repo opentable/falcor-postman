@@ -3,6 +3,7 @@ System.config({
   defaultJSExtensions: true,
   transpiler: "babel",
   babelOptions: {
+    "stage": 1,
     "optional": [
       "runtime",
       "optimisation.modules.system"
