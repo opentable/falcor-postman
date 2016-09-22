@@ -69,4 +69,8 @@ App.propTypes = {
   falcorPath: React.PropTypes.string,
 }
 
+App.defaultProps = {
+  falcorPath: '/mode.json'
+};
+
 export default App
