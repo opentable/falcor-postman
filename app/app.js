@@ -1,4 +1,5 @@
 import React from 'react'
+import Lockr from 'lockr'
 
 class App extends React.Component {
 
@@ -12,15 +13,20 @@ class App extends React.Component {
     error: {},
   }
 
-  componentDidMount = () => this.falcorGet()
+  componentDidMount = () => {
+    this.setState({queries: Lockr.get('queries', [])})
+    this.falcorGet()
+  }
 
   updateQuery = query => this.setState({ query })
   handleOnChange= event => this.updateQuery(event.target.value)
+
   handleOnClick = () => {
     const queries = this.state.queries
     const query = this.state.query
     if (queries.length === 0 || queries[queries.length - 1] !== query) {
       this.setState({queries: queries.concat(query)})
+      Lockr.set('queries', queries.concat(query))
     }
     this.falcorGet()
   }

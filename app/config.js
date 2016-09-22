@@ -20,6 +20,7 @@ System.config({
     "core-js": "npm:core-js@1.2.7",
     "falcor": "npm:falcor@0.1.17",
     "falcor-http-datasource": "npm:falcor-http-datasource@0.1.3",
+    "lockr": "npm:lockr@0.8.4",
     "react": "npm:react@15.3.1",
     "react-dom": "npm:react-dom@15.3.1",
     "github:jspm/nodelibs-assert@0.1.0": {
