@@ -1,10 +1,14 @@
 import { renderToString as render } from 'react-dom/server'
 import React from 'react'
 import App from './app/app'
+import express from 'express'
+import path from 'path'
 
-module.exports = (options) =>
-  (req, res, next) => {
-    if (req.url === options.middlewarePath) {
+module.exports = ({middlewarePath='/falcor-postman', app}) => {
+  app.use(express.static(path.join(__dirname, 'public')))
+
+  return (req, res, next) => {
+    if (req.url === middlewarePath) {
       const html =
         `
         <!DOCTYPE html>
@@ -18,3 +22,4 @@ module.exports = (options) =>
     }
     next()
   }
+}

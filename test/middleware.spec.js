@@ -5,13 +5,23 @@ chai.should()
 
 describe('middleware', () => {
   describe('when instantiated', () => {
-    const options = { middlewarePath: '/falcor-postman' }
+    let options = {
+      // middlewarePath: '/falcor-postman',
+      app: {
+        use: sinon.spy()
+      }
+    }
 
     /* eslint global-require: "off" */
-    const middleware = require('../middleware')(options)
+    let middleware = require('../middleware')(options)
 
-    it('then it should be instance of Function', () => {
+    it('should be a valid middleware function', () => {
       middleware.should.be.instanceof(Function)
+      middleware.length.should.be.equal(3)
+    })
+
+    it('should configure serving static files', () => {
+      sinon.assert.calledOnce(options.app.use)
     })
 
     describe('when invoked and options.middlewarePath doesn\'t match req.url', () => {
@@ -21,27 +31,54 @@ describe('middleware', () => {
 
       middleware(req, res, next)
 
-      it('then next called', () => {
+      it('should call next', () => {
         sinon.assert.called(next)
       })
     })
 
-    describe('when invoked and options.middlewarePath matches req.url', () => {
-      const req = { url: options.middlewarePath }
+    describe('when invoked at default /falcor-postman (and options.middlewarePath is not defined) matches req.url', () => {
+      const req = { url: '/falcor-postman' }
       const res = { status: sinon.stub(), send: sinon.stub() }
       const next = sinon.stub()
 
       middleware(req, res, next)
 
-      it('then res.status called w/ 200', () => {
+      it('should call res.status w/ 200', () => {
         sinon.assert.calledWith(res.status, 200)
       })
 
-      it('then res.send called', () => {
+      it('should call res.send', () => {
         sinon.assert.called(res.send)
       })
 
-      it('then next not called', () => {
+      it('should not call next', () => {
+        sinon.assert.notCalled(next)
+      })
+    })
+
+    describe('when invoked at custom defined path /postman matches req.url', () => {
+      const req = { url: '/postman' }
+      const res = { status: sinon.stub(), send: sinon.stub() }
+      const next = sinon.stub()
+
+      options = {
+        middlewarePath: '/postman',
+        app: {
+          use: sinon.spy()
+        }
+      }
+      middleware = require('../middleware')(options)
+      middleware(req, res, next)
+
+      it('should call res.status w/ 200', () => {
+        sinon.assert.calledWith(res.status, 200)
+      })
+
+      it('should call res.send', () => {
+        sinon.assert.called(res.send)
+      })
+
+      it('should not call next', () => {
         sinon.assert.notCalled(next)
       })
     })
