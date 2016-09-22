@@ -71,6 +71,6 @@ App.propTypes = {
 
 App.defaultProps = {
   falcorPath: '/mode.json'
-};
+}
 
 export default App
