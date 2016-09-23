@@ -19,50 +19,56 @@
   ],
   "license": "MIT",
   "scripts": {
-    "bundle": "jspm bundle-sfx index.js ./public/js/bundle-sfx.js -m",
-    "coverage": "istanbul cover _mocha -x app/model.js --  --compilers js:babel-core/register --recursive -r jsdom-global/register",
-    "example": "npm run bundle && PORT=3001 nodemon server.js",
-    "start": "npm run bundle && node server.js",
-    "test": "mocha --compilers js:babel-core/register --recursive -r jsdom-global/register"
+    "coverage": "istanbul cover _mocha -x src/model.js --  --compilers js:babel-core/register --recursive -r jsdom-global/register",
+    "start": "node example/server.js",
+    "test": "mocha --compilers js:babel-core/register --recursive -r jsdom-global/register",
+    "build": "rimraf dist && NODE_ENV=production webpack --progress --profile --colors && NODE_ENV=production",
+    "production": "npm run build && NODE_ENV=production node example/server.js"
   },
   "dependencies": {
-    "babel-core": "^6.14.0",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
     "falcor": "^0.1.17",
     "falcor-http-datasource": "^0.1.3",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "jsdom": "^9.5.0",
+    "normalize.css": "^4.2.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-preset-stage-1": "^6.13.0",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
+    "copy-webpack-plugin": "^3.0.1",
+    "css-loader": "^0.25.0",
     "enzyme": "^2.4.1",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "falcor-express": "^0.1.2",
     "falcor-router": "^0.4.0",
+    "html-webpack-plugin": "^2.22.0",
     "istanbul": "^1.1.0-alpha.1",
     "jsdom-global": "^2.1.0",
-    "jspm": "^0.16.45",
+    "json-loader": "^0.5.4",
+    "lockr": "^0.8.4",
     "mocha": "^3.0.2",
+    "node-localstorage": "^1.3.0",
+    "node-sass": "^3.10.0",
     "nodemon": "^1.10.2",
-    "sinon": "^1.17.5"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "app"
-    },
-    "dependencies": {
-      "falcor": "npm:falcor@^0.1.17",
-      "falcor-http-datasource": "npm:falcor-http-datasource@^0.1.3",
-      "react": "npm:react@^15.3.1",
-      "react-dom": "npm:react-dom@^15.3.1"
-    },
-    "devDependencies": {
-      "babel": "npm:babel-core@^5.8.24",
-      "babel-runtime": "npm:babel-runtime@^5.8.24",
-      "core-js": "npm:core-js@^1.1.4"
-    }
+    "postcss-loader": "^0.13.0",
+    "react": "^15.3.1",
+    "react-codemirror": "^0.2.6",
+    "react-dom": "^15.3.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.0.2",
+    "sinon": "^1.17.5",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-middleware": "^1.8.2",
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-merge": "^0.14.1"
   },
   "repository": {
     "type": "git",
@@ -101,7 +107,8 @@
   "babel": {
     "presets": [
       "es2015",
-      "react"
+      "react",
+      "stage-1"
     ]
   }
 }

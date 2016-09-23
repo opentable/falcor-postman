@@ -13,7 +13,7 @@ describe('middleware', () => {
     }
 
     /* eslint global-require: "off" */
-    let middleware = require('../middleware')(options)
+    let middleware = require('./../middleware/')(options)
 
     it('should be a valid middleware function', () => {
       middleware.should.be.instanceof(Function)

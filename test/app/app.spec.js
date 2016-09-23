@@ -3,10 +3,18 @@ import { shallow, mount } from 'enzyme'
 import chai from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import sinon from 'sinon'
-import App from '../../app/app'
+import App from './../../src/app'
+import { jsdom } from 'jsdom'
 
 chai.should()
 chai.use(chaiEnzyme())
+
+const LocalStorage = require('node-localstorage').LocalStorage;
+global.localStorage = new LocalStorage('./../localStorageTemp');
+global.document = jsdom('');
+global.window = document.defaultView;
+global.window.localStorage = global.localStorage;
+
 
 describe('<App />', () => {
   const then = sinon.stub() // info: need to find a better way to mock a Promise
@@ -32,13 +40,13 @@ describe('<App />', () => {
 
     describe('and "onChange" ".App-textarea.query"', () => {
       it('then "handleOnChange" should be called', () => {
-        sinon.spy(App.prototype, 'handleOnChange')
+        sinon.spy(App.prototype, 'updateQuery')
         const wrapper = mount(<App {...props} />)
 
         wrapper.find('.App-textarea.query').simulate('change')
 
-        App.prototype.handleOnChange.calledOnce.should.equal(true)
-        App.prototype.handleOnChange.restore()
+        App.prototype.updateQuery.calledOnce.should.equal(true)
+        App.prototype.updateQuery.restore()
       })
     })
 

@@ -1,32 +1,42 @@
 import React from 'react'
 import Lockr from 'lockr'
+import Codemirror from 'react-codemirror'
+
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
 
-  state = {
-    labels: {
-      button: 'get from query',
-    },
-    query: '["metrosById", [72], ["name"]]',
-    queries: [],
-    response: {},
-    error: {},
+    this.state = {
+      labels: {
+        button: 'get from query',
+      },
+      query: '["metrosById", [72], ["name"]]',
+      queries: [],
+      response: {},
+      error: {},
+    }
+
+    this.handleOnChange = this.handleOnChange.bind(this)
+    this.handleOnClick = this.handleOnClick.bind(this)
+    this.updateQuery = this.updateQuery.bind(this)
   }
 
-  componentDidMount = () => {
+  componentDidMount(){
     this.setState({queries: Lockr.get('queries', [])})
     this.falcorGet()
   }
 
-  updateQuery = query => this.setState({ query })
-  handleOnChange= event => this.updateQuery(event.target.value)
+  updateQuery(query){ this.setState({ query }) }
+  handleOnChange(event){this.updateQuery(event.target.value) }
 
-  handleOnClick = () => {
+  handleOnClick(){
     const queries = this.state.queries
     const query = this.state.query
     if (queries.length === 0 || queries[queries.length - 1] !== query) {
-      this.setState({queries: queries.concat(query)})
-      Lockr.set('queries', queries.concat(query))
+      const updatedQueries = queries.concat(query)
+      this.setState({queries:updatedQueries })
+      Lockr.set('queries', updatedQueries)
     }
     this.falcorGet()
   }
@@ -45,19 +55,27 @@ class App extends React.Component {
   }
 
   render() {
-    const queryHistory = this.state.queries.map(query =>
-      <li onClick={this.updateQuery.bind(null, query)}>
+    const queryHistory = this.state.queries.map((query, i) =>
+      <li key={i} onClick={this.updateQuery.bind(null, query)}>
         { query }
       </li>
     )
 
     return (
       <div className="App">
-        <ul>{queryHistory}</ul>
+        <ul>{queryHistory.reverse()}</ul>
         <h1>falcor-routes</h1>
         <div>
           <h2>query</h2>
           <textarea className="App-textarea query" rows="2" value={this.state.query} onChange={this.handleOnChange} />
+          {/*
+            // TODO: need to fix tests to work with the codemirror, probably by mocking it via injectr
+            <Codemirror
+              value={this.state.query}
+              onChange={this.updateQuery}
+              options={{mode: 'javascript', lineNumbers: true}}
+            />
+        */}
           <button onClick={this.handleOnClick}>{this.state.labels.button}</button>
         </div>
         <div>
