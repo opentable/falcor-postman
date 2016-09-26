@@ -6,7 +6,6 @@ const Router = require('falcor-router')
 const falcorPostman = require('./../falcor-postman.js')
 const app = express()
 const isDevelopment = process.env.NODE_ENV !== 'production'
-const port = process.env.PORT ? process.env.PORT : 3000
 
 if (isDevelopment) {
   require('./webpackServeBundle')(app)
@@ -17,14 +16,13 @@ if (isDevelopment) {
     // middlewarePath: '/falcor-postman',
 
     // # falcorPath
-    // Optional: falcor model path, default: localhost/model.json
+    // Optional: falcor model path, default: '/model.json'
     // falcorPath: '/model.json',
 
     // Express app
     app
   }))
 }
-
 
 app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
   const router = new Router([
@@ -59,5 +57,5 @@ app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
   return router
 }))
 
-
+const port = process.env.PORT ? process.env.PORT : 3000
 app.listen(port, () => console.log(`go to http://0.0.0.0:${port}`))

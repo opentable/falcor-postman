@@ -43,7 +43,7 @@ if (TARGET === 'start') {
           exclude: /(node_modules|bower_components)/,
           loader: 'babel',
           query: {
-            presets: ["react", "es2015", "stage-1", "react-hmre"]
+            presets: ["react", "es2015", "react-hmre"]
           }
         },
         {
@@ -57,7 +57,7 @@ if (TARGET === 'start') {
       new HtmlWebpackPlugin({
         template: 'src/static/template.html',
         inject: 'body',
-        filename: 'fp.html'
+        filename: 'falcor-postman.html'
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
@@ -104,7 +104,7 @@ if (TARGET === 'build') {
       new HtmlWebpackPlugin({
         template: 'src/static/template.html',
         inject: 'body',
-        filename: 'fp.html'
+        filename: 'falcor-postman.html'
       }),
       new webpack.optimize.UglifyJsPlugin({
         compressor: {

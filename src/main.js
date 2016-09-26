@@ -10,4 +10,4 @@ const props = {
   falcorPath: '/model.json',
 }
 
-ReactDOM.render(<App {...props} />, document.getElementById('main'))
+ReactDOM.render(<App {...props} />, document.getElementById('app'))
