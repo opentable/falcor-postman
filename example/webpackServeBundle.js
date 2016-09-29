@@ -21,7 +21,7 @@ module.exports = app => {
   app.use(middleware)
   app.use(webpackHotMiddleware(compiler))
   app.get('/falcor-postman', (req, res) => {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '/../dist/fp.html')))
+    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '/../dist/falcor-postman.html')))
     res.end()
   })
 }

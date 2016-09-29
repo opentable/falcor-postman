@@ -3,7 +3,7 @@ import Lockr from 'lockr'
 import Codemirror from 'react-codemirror'
 
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props)
 
@@ -99,5 +99,3 @@ App.propTypes = {
 App.defaultProps = {
   falcorPath: '/model.json'
 }
-
-export default App

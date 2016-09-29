@@ -12,11 +12,11 @@ if (isDevelopment) {
 } else {
   app.use(falcorPostman({
     // # middlewarePath
-    // Optional: path used to serve the falcor-postman app, default: '/falcor-postman'
+    // Optional: path used to serve the falcor-postman app, default:
     // middlewarePath: '/falcor-postman',
 
     // # falcorPath
-    // Optional: falcor model path, default: '/model.json'
+    // Optional: falcor model path, default:
     // falcorPath: '/model.json',
 
     // Express app
@@ -58,4 +58,4 @@ app.use('/model.json', falcorExpress.dataSourceRoute((req, res) => {
 }))
 
 const port = process.env.PORT ? process.env.PORT : 3000
-app.listen(port, () => console.log(`go to http://0.0.0.0:${port}`))
+app.listen(port, () => console.log(`go to http://0.0.0.0:${port}/falcor-postman`))
