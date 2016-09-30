@@ -2,5 +2,5 @@
 coverage
 jspm_packages
 node_modules
-public
+dist
 *.log
