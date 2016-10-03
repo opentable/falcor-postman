@@ -102,11 +102,5 @@
       ],
       "react/jsx-filename-extension": "off"
     }
-  },
-  "babel": {
-    "presets": [
-      "es2015",
-      "react"
-    ]
   }
 }
