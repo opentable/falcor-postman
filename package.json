@@ -21,8 +21,7 @@
   "scripts": {
     "coverage": "istanbul cover _mocha -x src/model.js --  --compilers js:babel-core/register --recursive -r jsdom-global/register",
     "start": "node example/server.js",
-    "lint": "eslint .",
-    "test": "mocha --compilers js:babel-core/register --recursive -r jsdom-global/register",
+    "test": "eslint . && mocha --compilers js:babel-core/register --recursive -r jsdom-global/register",
     "build": "rimraf dist && NODE_ENV=production webpack --progress --profile --colors && NODE_ENV=production",
     "production": "npm run build && NODE_ENV=production node example/server.js"
   },
