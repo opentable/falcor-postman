@@ -21,10 +21,15 @@
   "scripts": {
     "coverage": "istanbul cover _mocha -x src/model.js --  --compilers js:babel-core/register --recursive -r jsdom-global/register",
     "start": "node example/server.js",
-    "test": "eslint . && mocha --compilers js:babel-core/register --recursive -r jsdom-global/register",
+    "test": "mocha --compilers js:babel-core/register --recursive -r jsdom-global/register",
+    "lint": "eslint",
     "build": "rimraf dist && NODE_ENV=production webpack --progress --profile --colors && NODE_ENV=production",
     "production": "npm run build && NODE_ENV=production node example/server.js"
   },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
   "dependencies": {
     "autoprefixer": "^6.4.1",
     "babel-core": "^6.14.0",
@@ -64,6 +69,7 @@
     "node-sass": "^3.10.0",
     "nodemon": "^1.10.2",
     "postcss-loader": "^0.13.0",
+    "pre-commit": "^1.1.3",
     "react": "^15.3.1",
     "react-codemirror": "^0.2.6",
     "react-dom": "^15.3.1",
