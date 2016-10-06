@@ -9,9 +9,9 @@ export default class App extends React.Component {
 
     this.state = {
       labels: {
-        button: 'get from query',
+        button: 'Get',
       },
-      query: '["metrosById", [72], ["name"]]',
+      query: 'Your query here',
       queries: [],
       response: {},
       error: {},
@@ -56,35 +56,52 @@ export default class App extends React.Component {
 
   render() {
     const queryHistory = this.state.queries.map((query, i) =>
-      <li key={i} onClick={this.updateQuery.bind(null, query)}>
-        { query }
-      </li>
+      <div className="query-item pure-g" key={i} onClick={this.updateQuery.bind(null, query)}>
+        <div className="pure-u-3-4">
+          <p className="query-desc">{ query }</p>
+        </div>
+      </div>
     )
 
     return (
-      <div className="App">
-        <ul>{queryHistory.reverse()}</ul>
-        <h1>falcor-routes</h1>
-        <div>
-          <h2>query</h2>
-          <textarea className="App-textarea query" rows="2" value={this.state.query} onChange={this.handleOnChange} />
-          {/*
-            // TODO: need to fix tests to work with the codemirror, probably by mocking it via injectr
-            <Codemirror
-              value={this.state.query}
-              onChange={this.updateQuery}
-              options={{mode: 'javascript', lineNumbers: true}}
-            />
-        */}
-          <button onClick={this.handleOnClick}>{this.state.labels.button}</button>
+      <div id="layout" className="App content pure-g">
+
+        <div id="list" className="pure-u-1">
+          {queryHistory.reverse()}
         </div>
-        <div>
-          <h2>response.json</h2>
-          <textarea className="App-textarea" rows="25" value={JSON.stringify(this.state.response.json, null, 2) } readOnly />
-        </div>
-        <div>
-          <h2>error</h2>
-          <textarea className="App-textarea" rows="10" value={JSON.stringify(this.state.error, null, 2) } readOnly />
+
+        <div id="main" className="pure-u-1">
+          <div className="query-content">
+
+            <div className="query-content-editor pure-g">
+              <div className="pure-u-5-6">
+                {/*
+                  <textarea className="App-textarea query" rows="2" value={this.state.query} onChange={this.handleOnChange} />
+                */}
+
+                  <Codemirror
+                    value={this.state.query}
+                    onChange={this.updateQuery}
+                    options={{
+                      mode: 'javascript',
+                      lineNumbers: false,
+                      tabSize: 2
+                    }}
+                  />
+
+              </div>
+
+              <div className="query-content-editor-controls pure-u-1-6">
+                <button className="primary-button pure-button" onClick={this.handleOnClick}>{this.state.labels.button}</button>
+              </div>
+            </div>
+
+
+            <div className="query-content-result">
+              <pre>{JSON.stringify(this.state.response.json, null, 2) }</pre>
+              {/*<pre>{JSON.stringify(this.state.error, null, 2) }</pre>*/}
+            </div>
+          </div>
         </div>
       </div>
     )
