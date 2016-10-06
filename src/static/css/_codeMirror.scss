@@ -1,8 +1,11 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
-  height: 100px;
-  color: black;
+  font-family: monospace, monospace;
+  height: auto;
+  color: #333333;
+  font-size: 2em;
+  font-weight: bold;
+  margin: .67em 0;
 }
 
 /* PADDING */
@@ -20,19 +23,9 @@
 
 /* GUTTER */
 
-.CodeMirror-gutters {
-  border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
-  white-space: nowrap;
-}
+.CodeMirror-gutters {}
 .CodeMirror-linenumbers {}
-.CodeMirror-linenumber {
-  padding: 0 3px 0 5px;
-  min-width: 20px;
-  text-align: right;
-  color: #999;
-  white-space: nowrap;
-}
+.CodeMirror-linenumber {}
 
 .CodeMirror-guttermarker { color: black; }
 .CodeMirror-guttermarker-subtle { color: #999; }
