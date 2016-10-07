@@ -2,7 +2,153 @@
 // ...
 
 // Partials
+@import '../../../node_modules/purecss/build/pure-min.css';
 @import 'codeMirror';
 
 // Global stylesheets
 // ...
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+body {
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #1b98f8;
+}
+
+
+/*
+ * -- HELPER STYLES --
+ * Over-riding some of the .pure-button styles to make my buttons look unique
+ */
+.primary-button,
+.secondary-button {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-radius: 20px;
+}
+.primary-button {
+    color: #fff;
+    background: #1b98f8;
+}
+.secondary-button {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: #666;
+    padding: 0.5em 2em;
+    font-size: 80%;
+}
+
+/*
+ * -- LAYOUT STYLES --
+ * This layout consists of two main elements, `#list` (query list), and `#main` (query content). Both elements are within `#layout`
+ */
+#layout, #list, #main {
+    margin: 0;
+    padding: 0;
+}
+
+/* Query Item Styles */
+.query-item {
+  padding: 0.9em 1em;
+  border-bottom: 1px solid #ddd;
+  border-left: 6px solid transparent;
+}
+
+.query-desc {
+  font-size: 80%;
+  margin: 0.4em 0;
+}
+
+.query-item:hover{
+  background: #eee;
+  cursor: pointer;
+}
+
+.query-item-active {
+  border-left: 6px solid #1b98f8;
+}
+
+/* Query Content Styles */
+.query-content-editor, .query-content-result {
+  padding: 1em 2em;
+}
+    .query-content-editor {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .query-content-editor-controls {
+      margin-top: 2em;
+      text-align: right;
+    }
+
+    .query-content-editor-controls .secondary-button {
+      margin-bottom: 0.3em;
+    }
+
+
+@media (max-width: 39.9em) {
+  #list {
+      display:none;
+    }
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ * On tablets and other medium-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 40em) {
+
+    #layout {
+      padding-left: 0px;
+      position: relative;
+    }
+
+    #list {
+      width:100%;
+    }
+
+    #main {
+      right: 0;
+      left: 0px;
+      overflow: auto;
+      width: 100%;
+    }
+}
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ * On desktops and other large-sized devices, we want to customize some
+ * of the mobile styles.
+ */
+@media (min-width: 60em) {
+     #layout {
+      padding-left: 350px;
+     }
+    /* This will take up the entire height, and be a little thinner */
+    #list {
+      display: block;
+      margin-left: -350px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow: auto;
+      width: 350px;
+      height: 100%;
+      border-right: 1px solid #ddd;
+    }
+
+    /* This will now take up it's own column, so don't need position: fixed; */
+    #main {
+      position: static;
+      margin: 0;
+      padding: 0;
+    }
+}
+
