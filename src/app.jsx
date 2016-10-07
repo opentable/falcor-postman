@@ -63,6 +63,12 @@ export default class App extends React.Component {
       </div>
     )
 
+    const showResponseOrError = (response, error) =>
+      Object.keys(response).length >= 0 ?
+        JSON.stringify(response.json, null, 2) :
+        JSON.stringify(error, null, 2)
+
+
     return (
       <div id="layout" className="App content pure-g">
 
@@ -98,8 +104,7 @@ export default class App extends React.Component {
 
 
             <div className="query-content-result">
-              <pre>{JSON.stringify(this.state.response.json, null, 2) }</pre>
-              {/*<pre>{JSON.stringify(this.state.error, null, 2) }</pre>*/}
+              <pre>{ showResponseOrError(this.state.response, this.state.error) }</pre>
             </div>
           </div>
         </div>
