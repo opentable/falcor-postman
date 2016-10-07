@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app.jsx'
 import model from './model'
-import 'normalize.css'
 import './static/css/styles.scss'
 
 const props = {

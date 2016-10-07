@@ -42,7 +42,6 @@
     "falcor-router": "^0.4.0",
     "html-webpack-plugin": "^2.22.0",
     "jsdom": "^9.5.0",
-    "normalize.css": "^4.2.0",
     "sinon": "^1.17.5",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.2",
