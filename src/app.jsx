@@ -11,7 +11,7 @@ export default class App extends React.Component {
       labels: {
         button: 'Get',
       },
-      query: 'Your query here',
+      query: 'Enter Falcor query',
       queries: [],
       response: {},
       error: {},
