@@ -1,13 +1,13 @@
 # falcor-postman
 
-A tool that enables you to exercise your Express.js app Falcor's endpoint and therefore helps you to validate your queries.
+A graphical interactive in-browser Falcor queries validator IDE.
 
 ## Usage
 
 Npm install using the following command:
 
 ```
-npm i -S falcor-postman
+npm install --save falcor-postman
 ```
 
 And use it inside your Express app:
@@ -24,7 +24,7 @@ app.use(falcorPostman(options));
 
 Where **options** is an object with the following properties:
 
-name|type|description|example
+name|type|description|default
 ---|---|---|---|---
 middlewarePath|_string_|Optional: path used to serve the falcor-postman app|'/falcor-postman'|
 falcorPath|_string_|Optional: falcor model path|'/model.json'|
@@ -32,7 +32,7 @@ app|_object_|The instance of your Express.js app|app
 
 ## UI
 
-![alt text](falcor-postman-ui.png "UI")
+![falcor-postman UI](falcor-postman-ui.png "falcor-postman UI")
 
 ## Example
 
