@@ -9,16 +9,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const common = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin()
-  ],
-
-  module: {
-    loaders: [
-      {
-        test: /\.json?$/,
-        loader: 'json'
-      }
-    ]
-  }
+  ]
 };
 
 if (TARGET === 'start') {

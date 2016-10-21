@@ -1,4 +1,4 @@
-/* eslint no-global-assign: "off" */
+/* eslint no-global-assign: off */
 const jsdom = require('jsdom').jsdom;
 
 document = jsdom('hello world');
