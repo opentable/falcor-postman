@@ -2,7 +2,7 @@
   "name": "falcor-postman",
   "version": "1.0.0-rc.1",
   "description": "A graphical interactive in-browser Falcor queries validator IDE.",
-  "main": "index.js",
+  "main": "falcor-postman.js",
   "author": {
     "name": "big-mars Team",
     "email": "big-mars-team@opentable.com"
