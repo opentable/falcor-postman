@@ -69,6 +69,7 @@
     "enzyme": "^2.5.1",
     "eslint": "^3.8.1",
     "eslint-config-opentable": "^6.0.0",
+    "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-react": "^6.4.1",
     "istanbul": "^1.1.0-alpha.1",
     "jsdom-global": "^2.1.0",
