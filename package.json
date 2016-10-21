@@ -4,8 +4,8 @@
   "description": "A graphical interactive in-browser Falcor queries validator IDE.",
   "main": "index.js",
   "author": {
-    "name": "TBD",
-    "email": "TBD"
+    "name": "big-mars Team",
+    "email": "big-mars-team@opentable.com"
   },
   "contributors": [
     {
@@ -16,6 +16,18 @@
       "name": "Mattia Richetto",
       "email": "mrichetto@opentable.com"
     }
+  ],
+  "keywords": [
+    "Falcor",
+    "graphical",
+    "GUI",
+    "IDE",
+    "in-browser",
+    "interactive",
+    "queries",
+    "react",
+    "react-component",
+    "validator"
   ],
   "license": "MIT",
   "scripts": {
