@@ -1,5 +1,5 @@
-import express from 'express';
-import path from 'path';
+const express = require('express');
+const path = require('path');
 
 module.exports = ({ middlewarePath = '/falcor-postman', app }) => {
   app.use(express.static(path.join(__dirname, '/../dist/')));
