@@ -1,6 +1,6 @@
 {
   "name": "falcor-postman",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.1",
   "description": "A graphical interactive in-browser Falcor queries validator IDE.",
   "main": "index.js",
   "author": {
