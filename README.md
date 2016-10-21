@@ -1,6 +1,6 @@
 # falcor-postman
 
-A graphical interactive in-browser Falcor queries validator IDE.
+A graphical interactive in-browser [Falcor](https://netflix.github.io/falcor/) queries validator IDE.
 
 ## Usage
 
@@ -39,9 +39,9 @@ app|_object_|The instance of your Express.js app|app
 Clone or download this GitHub repository then run the example app using the following npm commands:
 
 ```
-npm i
+npm install
 
 npm run start
 ```
 
-> You should be able to open your browser and see the middleware running at the following URL: [http://0.0.0.0:3000/falcor-postman](http://0.0.0.0:3000/falcor-postman)
+> You should be able to open your browser and see the middleware running at the following URL: [http://127.0.0.1:3000/falcor-postman](http://127.0.0.1:3000/falcor-postman)

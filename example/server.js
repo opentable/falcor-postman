@@ -1,4 +1,4 @@
-/* eslint no-console: "off" */
+/* eslint no-console: off */
 const express = require('express');
 const falcorExpress = require('falcor-express');
 const Router = require('falcor-router');
@@ -32,7 +32,8 @@ app.use('/model.json', falcorExpress.dataSourceRoute(() => {
       get(pathSet) {
         const metros = [
           { id: 4, name: 'San Francisco' },
-          { id: 72, name: 'London' }
+          { id: 72, name: 'London' },
+          { id: 201, name: 'Tokio' }
         ];
 
         const results = [];
@@ -47,10 +48,6 @@ app.use('/model.json', falcorExpress.dataSourceRoute(() => {
           }, this);
         }, this);
 
-        results.push({
-          path: ['metrosById', 72, 'name'],
-          value: 'London'
-        });
         return results;
       }
     }
@@ -59,4 +56,4 @@ app.use('/model.json', falcorExpress.dataSourceRoute(() => {
 }));
 
 const port = process.env.PORT ? process.env.PORT : 3000;
-app.listen(port, () => console.log(`go to http://0.0.0.0:${port}/falcor-postman`));
+app.listen(port, () => console.log(`go to http://127.0.0.1:${port}/falcor-postman`));

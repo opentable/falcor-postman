@@ -1,7 +1,13 @@
 {
   "env": {
+    "node": true,
     "browser": true,
-    "node": true
+    "mocha": true
   },
-  "extends": "opentable"
+  "parser": "babel-eslint",
+  "extends": "opentable",
+  "rules": {
+    "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": "warn"
+  }
 }
