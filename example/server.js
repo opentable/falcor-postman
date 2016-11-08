@@ -25,9 +25,9 @@ app.use(falcorModelPath, falcorExpress.dataSourceRoute(() => {
       route: 'metrosById[{integers:ids}]["name"]',
       get(pathSet) {
         const metros = [
-            { id: 4, name: 'San Francisco' },
-            { id: 72, name: 'London' },
-            { id: 201, name: 'Tokio' }
+          { id: 4, name: 'San Francisco' },
+          { id: 72, name: 'London' },
+          { id: 201, name: 'Tokio' }
         ];
 
         const results = [];
