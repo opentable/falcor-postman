@@ -23,7 +23,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.setState({ queries: Lockr.get('queries', []) });
-    this.falcorGet();
   }
 
   updateQuery(query) { this.setState({ query }); }
@@ -42,7 +41,7 @@ export default class App extends React.Component {
   }
 
   falcorGet() {
-    this.props.model(this.props.falcorPath).get(JSON.parse(this.state.query))
+    this.props.model(this.props.falcorPath).get(...JSON.parse(this.state.query))
       .then((response) => {
         if (response) {
           this.setState({ response, error: {} });

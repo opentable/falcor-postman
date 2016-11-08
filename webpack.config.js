@@ -3,8 +3,17 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const merge = require('webpack-merge');
+const { name, version } = require('./package.json');
 
 const TARGET = process.env.npm_lifecycle_event;
+const title = `${name} v${version}`;
+
+const htmlWebpackPluginOptions = {
+  title,
+  template: 'src/static/template.html',
+  inject: 'body',
+  filename: 'falcor-postman.html'
+};
 
 const common = {
   plugins: [
@@ -45,11 +54,7 @@ if (TARGET === 'start') {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({
-        template: 'src/static/template.html',
-        inject: 'body',
-        filename: 'falcor-postman.html'
-      }),
+      new HtmlWebpackPlugin(htmlWebpackPluginOptions),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoErrorsPlugin(),
       new webpack.DefinePlugin({
@@ -92,11 +97,7 @@ if (TARGET === 'build') {
     },
 
     plugins: [
-      new HtmlWebpackPlugin({
-        template: 'src/static/template.html',
-        inject: 'body',
-        filename: 'falcor-postman.html'
-      }),
+      new HtmlWebpackPlugin(htmlWebpackPluginOptions),
       new webpack.optimize.UglifyJsPlugin({
         compressor: {
           warnings: false,
@@ -112,7 +113,6 @@ if (TARGET === 'build') {
       new webpack.optimize.UglifyJsPlugin({
         minimize: true,
         compressor: { warnings: false }
-        // mangle:  true
       })
     ]
   });
