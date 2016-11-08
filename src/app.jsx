@@ -23,7 +23,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.setState({ queries: Lockr.get('queries', []) });
-    this.falcorGet();
   }
 
   updateQuery(query) { this.setState({ query }); }
