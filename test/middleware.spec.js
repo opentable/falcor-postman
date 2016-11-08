@@ -1,3 +1,4 @@
+/* eslint global-require: "off" */
 const chai = require('chai');
 const sinon = require('sinon');
 
@@ -12,8 +13,15 @@ describe('middleware', () => {
       }
     };
 
-    /* eslint global-require: "off" */
-    let middleware = require('./../middleware/')(options);
+    const fileSystem = {
+      readFileSync: () => ({
+        toString: () => ({
+          replace: sinon.spy()
+        })
+      })
+    };
+
+    let middleware = require('./../middleware/')(options, fileSystem);
 
     it('should be a valid middleware function', () => {
       middleware.should.be.instanceof(Function);
@@ -67,7 +75,7 @@ describe('middleware', () => {
           use: sinon.spy()
         }
       };
-      middleware = require('../middleware')(options);
+      middleware = require('../middleware')(options, fileSystem);
 
       middleware(req, res, next);
 

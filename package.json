@@ -36,7 +36,7 @@
     "lint": "eslint --ignore-pattern 'coverage/*' --ignore-pattern 'dist/*' . ",
     "production": "npm run build && NODE_ENV=production PORT=3000 node example/server.js",
     "start": "PORT=3000 node example/server.js",
-    "test": "npm run build && mocha --compilers js:babel-register --compilers jsx:babel-register --recursive -r jsdom-global/register"
+    "test": "mocha --compilers js:babel-register --compilers jsx:babel-register --recursive -r jsdom-global/register"
   },
   "pre-commit": [
     "lint",

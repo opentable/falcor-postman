@@ -1,9 +1,10 @@
 /* eslint no-console: off */
 const express = require('express');
 const falcorExpress = require('falcor-express');
+const fs = require('fs');
 const Router = require('falcor-router');
-const falcorPostman = require('./../falcor-postman.js');
 const webpackServeBundle = require('./webpackServeBundle');
+const falcorPostman = require('./../falcor-postman.js');
 
 const app = express();
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -16,7 +17,7 @@ const options = { middlewarePath, falcorModelPath, app };
 if (isDevelopment) {
   webpackServeBundle(options);
 } else {
-  app.use(falcorPostman(options));
+  app.use(falcorPostman(options, fs));
 }
 
 app.use(falcorModelPath, falcorExpress.dataSourceRoute(() => {
