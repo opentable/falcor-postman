@@ -34,6 +34,8 @@ app|_object_|The instance of your Express.js app|app
 
 ![falcor-postman UI](falcor-postman-ui.png "falcor-postman UI")
 
+> Query: `[["metrosById", [201], ["name"]]]`
+
 ## Example
 
 Clone or download this GitHub repository then run the example app using the following npm commands:
