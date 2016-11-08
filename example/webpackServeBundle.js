@@ -1,10 +1,10 @@
 const path = require('path');
-const config = require('./../webpack.config.js');
 const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
+const config = require('./../webpack.config.js');
 
-module.exports = (app) => {
+module.exports = (options) => {
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
@@ -18,10 +18,13 @@ module.exports = (app) => {
     }
   });
 
-  app.use(middleware);
-  app.use(webpackHotMiddleware(compiler));
-  app.get('/falcor-postman', (req, res) => {
-    res.write(middleware.fileSystem.readFileSync(path.join(__dirname, '/../dist/falcor-postman.html')));
-    res.end();
+  options.app.use(middleware);
+  options.app.use(webpackHotMiddleware(compiler));
+  options.app.get(options.middlewarePath, (req, res) => {
+    res.status(200);
+    const html = middleware.fileSystem.readFileSync(path.join(__dirname, '/../dist/falcor-postman.html'))
+      .toString()
+      .replace(/{{falcor-model-path}}/g, options.falcorModelPath);
+    res.send(html);
   });
 };

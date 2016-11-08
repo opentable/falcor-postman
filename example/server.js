@@ -14,7 +14,7 @@ const falcorModelPath = '/example.json';
 const options = { middlewarePath, falcorModelPath, app };
 
 if (isDevelopment) {
-  webpackServeBundle(app);
+  webpackServeBundle(options);
 } else {
   app.use(falcorPostman(options));
 }
