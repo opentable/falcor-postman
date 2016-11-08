@@ -17,7 +17,7 @@ const falcorPostman = require('falcor-postman');
 
 const app = express();
 
-const options = { middlewarePath: '/falcor-postman', falcorPath: '/model.json', app };
+const options = { middlewarePath: '/falcor-postman', falcorModelPath: '/model.json', app };
 
 app.use(falcorPostman(options));
 ```
@@ -27,7 +27,7 @@ Where **options** is an object with the following properties:
 name|type|description|default
 ---|---|---|---|---
 middlewarePath|_string_|Optional: path used to serve the falcor-postman app|'/falcor-postman'|
-falcorPath|_string_|Optional: falcor model path|'/model.json'|
+falcorModelPath|_string_|Optional: falcor model path|'/model.json'|
 app|_object_|The instance of your Express.js app|app
 
 ## UI
