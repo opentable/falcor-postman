@@ -4,9 +4,10 @@ import App from './app.jsx';
 import model from './model';
 import './static/css/styles.scss';
 
+const falcorModelPath = document.getElementById('app').getAttribute('data-falcor-model-path');
+
 const props = {
-  model,
-  falcorPath: '/model.json'
+  model: model(falcorModelPath)
 };
 
 ReactDOM.render(<App {...props} />, document.getElementById('app'));

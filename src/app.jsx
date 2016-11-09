@@ -41,7 +41,7 @@ export default class App extends React.Component {
   }
 
   falcorGet() {
-    this.props.model(this.props.falcorPath).get(...JSON.parse(this.state.query))
+    this.props.model.get(...JSON.parse(this.state.query))
       .then((response) => {
         if (response) {
           this.setState({ response, error: {} });
@@ -110,10 +110,5 @@ export default class App extends React.Component {
 }
 
 App.propTypes = {
-  model: React.PropTypes.func,
-  falcorPath: React.PropTypes.string
-};
-
-App.defaultProps = {
-  falcorPath: '/model.json'
+  model: React.PropTypes.object
 };

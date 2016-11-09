@@ -20,7 +20,7 @@ describe('<App />', () => {
   const then = sinon.stub(); // info: need to find a better way to mock a Promise
   const props = {
     model: () => ({ get: () => ({ then }) }),
-    falcorPath: '/model.json'
+    falcorModelPath: '/model.json'
   };
 
   describe('when rendered', () => {
