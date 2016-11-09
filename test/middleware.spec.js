@@ -6,13 +6,6 @@ chai.should();
 
 describe('middleware', () => {
   describe('when instantiated', () => {
-    let options = {
-      // middlewarePath: '/falcor-postman',
-      app: {
-        use: sinon.spy()
-      }
-    };
-
     const fileSystem = {
       readFileSync: () => ({
         toString: () => ({
@@ -21,7 +14,15 @@ describe('middleware', () => {
       })
     };
 
-    let middleware = require('./../middleware/')(options, fileSystem);
+    let options = {
+      // middlewarePath: '/falcor-postman',
+      app: {
+        use: sinon.spy()
+      },
+      fileSystem
+    };
+
+    let middleware = require('./../middleware/')(options);
 
     it('should be a valid middleware function', () => {
       middleware.should.be.instanceof(Function);
@@ -73,9 +74,10 @@ describe('middleware', () => {
         middlewarePath: '/postman',
         app: {
           use: sinon.spy()
-        }
+        },
+        fileSystem
       };
-      middleware = require('../middleware')(options, fileSystem);
+      middleware = require('../middleware')(options);
 
       middleware(req, res, next);
 

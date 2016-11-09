@@ -21,5 +21,7 @@ module.exports = (options) => {
 
   options.app.use(devMiddleware);
   options.app.use(hotMiddleware);
-  options.app.use(falcorPostman(options, devMiddleware.fileSystem));
+  const optionsWithFileSystem = options;
+  optionsWithFileSystem.fileSystem = devMiddleware.fileSystem;
+  options.app.use(falcorPostman(optionsWithFileSystem));
 };

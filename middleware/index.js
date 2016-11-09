@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
-module.exports = ({ middlewarePath = '/falcor-postman', falcorModelPath = '/model.json', app }, fileSystem) => {
+module.exports = ({ middlewarePath = '/falcor-postman', falcorModelPath = '/model.json', app, fileSystem = fs }) => {
   app.use(express.static(path.join(__dirname, '/../dist/'), { redirect: false }));
 
   return (req, res, next) => {
