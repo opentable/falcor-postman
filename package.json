@@ -1,7 +1,7 @@
 {
   "name": "falcor-postman",
   "version": "2.0.0",
-  "description": "A graphical interactive in-browser Falcor queries validator IDE.",
+  "description": "A graphical interactive in-browser IDE to validate Falcor queries.",
   "main": "falcor-postman.js",
   "author": {
     "name": "big-mars Team",
