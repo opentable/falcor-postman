@@ -1,6 +1,6 @@
 # falcor-postman
 
-A graphical interactive in-browser [Falcor](https://netflix.github.io/falcor/) queries validator IDE.
+A graphical interactive in-browser IDE to validate [Falcor](https://netflix.github.io/falcor/) queries.
 
 ## Usage
 
